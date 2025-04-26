@@ -7,3 +7,8 @@ declare module '@vibeflow/eslint-config/react' {
   import type { antfu } from '@antfu/eslint-config'
   export const reactConfig: ReturnType<typeof antfu>
 }
+
+declare module '@vibeflow/eslint-config/expo' {
+  import type { antfu } from '@antfu/eslint-config'
+  export const expoConfig: ReturnType<typeof antfu>
+}
