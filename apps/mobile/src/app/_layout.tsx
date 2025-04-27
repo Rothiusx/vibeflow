@@ -1,5 +1,7 @@
 import type { FontSource } from 'expo-font'
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
+import { ClerkProvider } from '@clerk/clerk-expo'
+import { tokenCache } from '@clerk/clerk-expo/token-cache'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
@@ -30,11 +32,14 @@ export default function RootLayout() {
 
   return (
     <GluestackUIProvider mode={colorScheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
+      <ClerkProvider tokenCache={tokenCache}>
+        <Stack>
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="auto" />
+      </ClerkProvider>
     </GluestackUIProvider>
   )
 }
