@@ -30,6 +30,8 @@ export default function SignUpScreen() {
         return
       }
 
+      console.log('data', data.value)
+
       try {
         await signUp.create({
           emailAddress: data.value.email,
@@ -50,18 +52,16 @@ export default function SignUpScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="bg-secondary-200 flex-1 items-center gap-4 p-16"
     >
-      <Text className="text-primary-800 mt-[10%] text-4xl font-bold">
-        Sign up
-      </Text>
+      <Text className="text-primary-800 mt-12 text-4xl font-bold">Sign up</Text>
 
-      <View className="w-full gap-4">
+      <View className="w-full gap-2">
         <form.Field name="email">
           {(field) => (
             <>
               <Text className="text-primary-800 text-lg font-medium">
                 Email
               </Text>
-              <Input isInvalid={!!field.state.meta.errors}>
+              <Input isInvalid={field.state.meta.errors.length > 0}>
                 <InputField
                   value={field.state.value}
                   onChangeText={field.handleChange}
@@ -82,7 +82,7 @@ export default function SignUpScreen() {
               <Text className="text-primary-800 text-lg font-medium">
                 Password
               </Text>
-              <Input isInvalid={!!field.state.meta.errors}>
+              <Input isInvalid={field.state.meta.errors.length > 0}>
                 <InputField
                   type="password"
                   value={field.state.value}

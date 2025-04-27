@@ -52,9 +52,7 @@ export default function SignInScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="bg-secondary-200 flex-1 items-center gap-4 p-16"
     >
-      <Text className="text-primary-800 mt-[10%] text-4xl font-bold">
-        Sign in
-      </Text>
+      <Text className="text-primary-800 mt-12 text-4xl font-bold">Sign in</Text>
 
       <View className="w-full gap-2">
         <form.Field name="email">

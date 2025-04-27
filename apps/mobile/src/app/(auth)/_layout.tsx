@@ -25,12 +25,7 @@ export default function AuthLayout() {
       />
       <Stack.Screen
         name="sign-up"
-        options={{
-          title: '',
-          headerBackground: () => (
-            <View className="bg-secondary-200 size-full" />
-          ),
-        }}
+        options={{ headerTransparent: true, title: '' }}
       />
     </Stack>
   )

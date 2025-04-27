@@ -3,9 +3,13 @@ import { HelloWave } from '@/components/HelloWave'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import { ThemedText } from '@/components/ThemedText'
 import { ThemedView } from '@/components/ThemedView'
-import { Image, Platform, StyleSheet } from 'react-native'
+import { Button } from '@/components/ui/button'
+import { useAuth } from '@clerk/clerk-expo'
+import { Image, Platform, StyleSheet, Text } from 'react-native'
 
 export default function HomeScreen() {
+  const { signOut } = useAuth()
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -18,6 +22,9 @@ export default function HomeScreen() {
         />
       }
     >
+      <Button onPress={async () => signOut()}>
+        <Text>Sign out</Text>
+      </Button>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
