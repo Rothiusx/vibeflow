@@ -13,13 +13,15 @@ export const expoOptionsConfig = {
       ...reactOptionsConfig.typescript.overridesTypeAware,
       'ts/no-require-imports': 'off',
       'ts/no-use-before-define': 'off',
-      'node/prefer-global/process': 'off',
     },
   },
   react: {
     overrides: {
       ...reactOptionsConfig.react.overrides,
     },
+  },
+  rules: {
+    'node/prefer-global/process': 'off',
   },
 }
 

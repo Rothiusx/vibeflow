@@ -18,5 +18,5 @@
       "persistent": true
     }
   },
-  "globalEnv": ["EXPO_OS"]
+  "globalEnv": ["EXPO_OS", "DARK_MODE"]
 }

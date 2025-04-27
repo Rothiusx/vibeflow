@@ -1,14 +1,10 @@
 import type { FontSource } from 'expo-font'
-import { useColorScheme } from '@/hooks/useColorScheme'
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from '@react-navigation/native'
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
+import { useColorScheme } from 'nativewind'
 import { useEffect } from 'react'
 import 'react-native-reanimated'
 import '@/globals.css'
@@ -17,7 +13,7 @@ import '@/globals.css'
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme()
+  const { colorScheme } = useColorScheme()
   const [loaded] = useFonts({
     SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf') as FontSource,
   })
@@ -33,12 +29,12 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <GluestackUIProvider mode={colorScheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
-    </ThemeProvider>
+    </GluestackUIProvider>
   )
 }
