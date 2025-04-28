@@ -39,7 +39,6 @@ export default function SignUpScreen() {
         })
 
         await signUp.prepareVerification({ strategy: 'email_code' })
-
         router.push('/verify')
       } catch (err) {
         console.log('Sign up error: ', err)
@@ -67,7 +66,7 @@ export default function SignUpScreen() {
                   onChangeText={field.handleChange}
                 />
               </Input>
-              {!!field.state.meta.errors && (
+              {field.state.meta.errors.length > 0 && (
                 <Text className="text-red-500">
                   {field.state.meta.errors[0]?.message}
                 </Text>
@@ -89,7 +88,7 @@ export default function SignUpScreen() {
                   onChangeText={field.handleChange}
                 />
               </Input>
-              {!!field.state.meta.errors && (
+              {field.state.meta.errors.length > 0 && (
                 <Text className="text-red-500">
                   {field.state.meta.errors[0]?.message}
                 </Text>
